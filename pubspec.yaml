@@ -1,6 +1,6 @@
 name: state_property
 description: A library that implements the State Property pattern for resolving the behavior of systems based on their current states.
-version: 1.0.0
+version: 1.1.0
 homepage: https://github.com/danReynolds/state_property
 
 environment:

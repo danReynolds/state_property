@@ -2,6 +2,8 @@
 
 library state_property;
 
+export 'package:state_property/widget_state_property.dart';
+
 typedef StatefulResolver<States, ResolverType> = ResolverType? Function(
   Set<States> states,
 );
