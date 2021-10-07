@@ -29,7 +29,7 @@ abstract class StateProperty<States, ResolverType> {
       _StatePropertyValue<States, ResolverType>(resolver);
 
   /// Resolves `null` as the behavior independent of the current state of the system.
-  static StateProperty<States, Null> never<States, ResolverType>() =>
+  static StateProperty<States, Null> never<States>() =>
       _StatePropertyValue<States, Null>(() => null);
 }
 

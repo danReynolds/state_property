@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:state_property/state_property.dart';
 
-typedef StatelessWidgetResolver = Widget Function(BuildContext context);
+typedef StatelessWidgetResolver = Widget? Function(BuildContext context);
 typedef StatefulWidgetResolver<States> = Widget? Function(
   BuildContext context,
   Set<States> states,
@@ -25,7 +25,7 @@ class WidgetStateProperty<States> {
   static WidgetStateProperty<States> resolveWith<States>(
           StatefulWidgetResolver<States> builder) =>
       WidgetStateProperty(
-        (BuildContext context) => StateProperty.resolveWith<States, Widget>(
+        (BuildContext context) => StateProperty.resolveWith<States, Widget?>(
             (states) => builder(context, states)),
       );
 
@@ -34,7 +34,7 @@ class WidgetStateProperty<States> {
     States state,
   ) =>
       WidgetStateProperty(
-        (BuildContext context) => StateProperty.resolveState<States, Widget>(
+        (BuildContext context) => StateProperty.resolveState<States, Widget?>(
             () => builder(context), state),
       );
 
@@ -43,10 +43,10 @@ class WidgetStateProperty<States> {
           StatelessWidgetResolver builder) =>
       WidgetStateProperty(
         (BuildContext context) =>
-            StateProperty.all<States, Widget>(() => builder(context)),
+            StateProperty.all<States, Widget?>(() => builder(context)),
       );
 
   /// Resolves `null` as the value regardless of the state of the scroll view.
   static WidgetStateProperty<States> never<States>() =>
-      WidgetStateProperty((_context) => StateProperty.never<States, Widget>());
+      WidgetStateProperty((_context) => StateProperty.never<States>());
 }
